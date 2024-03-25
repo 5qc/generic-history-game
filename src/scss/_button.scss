@@ -1,0 +1,23 @@
+@use "_settings" as *;
+
+button {
+    font-size: 1.5em;
+    padding: .5em .8em;
+    border: none;
+    background-color: darken($bgColor, 10%);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:hover {
+        transition: background-color .2s;
+        background-color: darken($bgColor, 15%);
+    }
+
+    &.correct {
+        background-color: $green;
+    }
+    &.incorrect {
+        background-color: $red;
+    }
+}

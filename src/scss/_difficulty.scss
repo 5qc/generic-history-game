@@ -1,0 +1,45 @@
+@use "_settings" as *;
+
+#select-difficulty {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    flex-direction: row;
+    transform: translateY(100vh);
+    z-index: 1000;
+
+    > div {
+        flex-grow: 1;
+        flex-basis: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    .easy {
+        background-color: $green;
+        animation: 1s move-up ease-in-out forwards;
+    }
+    .medium {
+        background-color: $yellow;
+        animation: 1s .5s move-up ease-in-out forwards;
+    }
+    .hard {
+        background-color: $red;
+        animation: 1s 1s move-up ease-in-out forwards;
+    }
+}
+
+@keyframes move-up {
+    0% {
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
