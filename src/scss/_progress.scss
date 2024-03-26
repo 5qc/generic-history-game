@@ -1,0 +1,30 @@
+@use "_settings" as *;
+
+#progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 20px;
+    z-index: 10;
+    background-color: darken($bgColor, 10%);
+    transition: 1s transform ease-in-out;
+
+    > div:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11;
+        width: 0%;
+        height: 100%;
+        background-color: darken($bgColor, 25%);
+        transition: 1s width ease-in-out;
+        text-align: right;
+    }
+
+    .score {
+        position: absolute;
+        top: 120%;
+        left: .5%;
+    }
+}

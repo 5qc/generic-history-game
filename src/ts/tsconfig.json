@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "outFile": "../../dist/script.js",
+        "sourceMap": true
+    },
+    "include": [
+        "data/*.ts",
+        "_*.ts",
+        "*.ts",
+        "script.ts"
+    ]
+}

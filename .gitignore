@@ -1,0 +1,6 @@
+# files
+*.bat
+.DS_Store
+
+# folders
+/.vscode

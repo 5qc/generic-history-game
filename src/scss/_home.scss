@@ -1,0 +1,58 @@
+#home {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &.animation {
+        .title {
+            animation: 2s move-left ease-in-out forwards;
+        }
+        .navigation {
+            animation: 2s move-right ease-in-out forwards;
+        }
+    }
+
+    .title {
+        font-size: 3em;
+        font-weight: 800;
+        
+        span {
+            display: block;
+            animation: 2s jiggle ease-in-out infinite;
+        }
+    }
+    .navigation {
+        padding-top: 10px;
+    }
+}
+
+@keyframes jiggle {
+    0% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(3deg);
+    }
+}
+@keyframes move-left {
+    0% {
+        transform: translateX(-0%);
+    }
+    100% {
+        transform: translateX(-100vw);
+    }
+}
+@keyframes move-right {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>generic history game</title>
+
+        <link rel="stylesheet" href="/dist/style.css" />
+        <script src="/dist/script.js" defer></script>
+    </head>
+    <body>
+        <div id="home">
+            <div class="title"><span>generic history game</span></div>
+            <div class="navigation">
+                <button id="home-play">play</button>
+            </div>
+        </div>
+
+        <div id="select-difficulty" class="none">
+            <div id="easy"><span>easy</span></div>
+            <div id="medium"><span>medium</span></div>
+            <div id="hard"><span>hard</span></div>
+        </div>
+
+        <div id="progress-bar" style="transform: translateY(-250%)">
+            <div></div>
+            <div class="score">score: <span id="score">0</span></div>
+        </div>
+        <div id="question" class="none">
+            <div class="question"></div>
+            <div class="answers">
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+
+        <div id="congrats" class="none">
+            <div>congrats</div>
+            you beat the game
+            <div id="final-score"></div>
+        </div>
+    </body>
+</html>

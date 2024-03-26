@@ -1,0 +1,24 @@
+@use "_settings" as *;
+
+@use "button";
+@use "congrats";
+@use "difficulty";
+@use "fonts";
+@use "home";
+@use "progress";
+@use "question";
+
+html, body {
+    height: 100%;
+}
+body {
+    overflow: hidden;
+    font-family: "Helvetica", "Arial", sans-serif;
+    margin: 0;
+    background-color: $bgColor;
+    color: #000;
+}
+
+.none {
+    display: none !important;
+}

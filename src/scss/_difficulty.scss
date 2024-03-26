@@ -1,0 +1,83 @@
+@use "_settings" as *;
+
+#select-difficulty {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    flex-direction: row;
+    transform: translateY(100vh);
+    z-index: 1000;
+
+    > div {
+        flex-grow: 1;
+        flex-basis: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        font-weight: bold;
+        flex-wrap: nowrap;
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    #easy {
+        background-color: $green;
+        animation: 1s move-up ease-in-out forwards;
+    }
+    #medium {
+        background-color: $yellow;
+        animation: 1s .5s move-up ease-in-out forwards;
+    }
+    #hard {
+        background-color: $red;
+        animation: 1s 1s move-up ease-in-out forwards;
+    }
+
+    &.expand-wrapper {
+        > div {
+            flex-shrink: 1;
+        }
+
+        .expand {
+            flex-basis: 100vw !important;
+            flex-grow: 0;
+            flex-shrink: 0 !important;
+            z-index: 1;
+            transition: 1s flex-basis ease-in-out, 1s flex-grow ease-in-out, 1s flex-shrink ease-in-out;
+        }
+
+        .difficulty-transition {
+            animation: 2s diff linear forwards !important;
+        }
+    }
+}
+
+// animations yippee
+@keyframes diff {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(5);
+    }
+}
+
+@keyframes move-up {
+    0% {
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
