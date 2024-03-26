@@ -1,9 +1,7 @@
+@use "_mixins" as *;
+
 #home {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include fullscreen();
     flex-direction: column;
 
     &.animation {
@@ -25,7 +23,7 @@
         }
     }
     .navigation {
-        padding-top: 10px;
+        @include buttons();
     }
 }
 

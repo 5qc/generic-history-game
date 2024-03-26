@@ -1,10 +1,10 @@
 const easyQuestions = [
-    ["who was the first president of the united states?", "george washington", "thomas jefferson", "abraham lincoln", "john adams"],
+    ["who was the first president of the united states?", "george washington", "john adams", "thomas jefferson", "james madison", "james monroe", "john quicny adams", "andrew jackson", "martin van buren", "william henry harrison", "john tyler"],
     ["who was the first woman to fly across the atlantic solo?", "amelia earhart", "beryl markham", "jacqueline cochran", "maude bonney"],
-    ["what country did napoleon rule over?", "france", "portugal", "united kingdom", "netherlands"],
-    ["who painted the mona lisa?", "leonardo da vinci", "michelangelo", "jan van eyck", "raphael"],
+    ["what country did napoleon rule over?", "france", "portugal", "united kingdom", "netherlands", "spain", "belgium", "switzerland", "italy", "germany"],
+    ["who painted the mona lisa?", "leonardo da vinci", "michelangelo", "jan van eyck", "raphael", "masaccio", "titian"],
     ["who invented the telephone?", "alexander graham bell", "samuel morse", "steve jobs", "edwin howard armstrong"],
-    ["the first atomic bomb attack was on which city?", "hiroshima", "nagasaki", "kobe", "fukuoka"]
+    ["the first atomic bomb attack was on which city?", "hiroshima", "nagasaki", "kobe", "fukuoka", "sendai", "kyoto", "niigata", "kawasaki", "nagoya"]
 ];
 const hardQuestions = [
     ["", "", "", "", ""]
@@ -113,10 +113,18 @@ function generateQuestion(difficulty) {
     }
     const r = Math.floor(Math.random() * data.length);
     let q = [...[...data][r]];
+    let ic = [...[...data][r]];
     questionPage.querySelector(".question").innerHTML = q[0];
+    ic.shift();
+    ic.shift();
+    console.log(ic);
+    ic = shuffle(ic);
+    while (ic.length > 3)
+        ic.pop();
+    console.log(ic);
     q.shift();
     q[0] += "!!c";
-    q = shuffle(q);
+    q = shuffle([q[0], ...ic]);
     let correct;
     for (let i = 0; i < q.length; i++) {
         if (q[i].endsWith("!!c")) {
@@ -216,6 +224,29 @@ function generateQuestion(difficulty) {
 }
 function updateProgressBar() {
     bar.style.width = `${(questionNo / maxQuestions) * 100}%`;
+}
+// notice data
+const notices = {
+    "about": "this is a generic history game about history and stuff (cause i like history)"
+};
+// functions
+const notice = document.getElementById("notice");
+document.getElementById("home-about").onclick = () => {
+    showNotice("about");
+};
+function showNotice(title) {
+    const t = document.getElementById("notice-title");
+    const c = document.getElementById("notice-content");
+    t.innerText = title;
+    c.innerText = notices[title];
+    notice.classList.remove("none");
+    notice.onclick = () => {
+        notice.classList.add("zoom-out");
+        setTimeout(() => {
+            notice.classList.remove("zoom-out");
+            notice.classList.add("none");
+        }, 1000);
+    };
 }
 document.head.insertAdjacentHTML("beforeend", `<style>
 .transition2 .question {

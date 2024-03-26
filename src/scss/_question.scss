@@ -1,9 +1,7 @@
+@use "_mixins" as *;
+
 #question {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include fullscreen();
     flex-direction: column;
 
     .question {
@@ -11,10 +9,7 @@
         font-weight: 800;
     }
     .answers {
-        padding-top: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
+        @include buttons();
     }
 
     &.backwards, &.backwards * {

@@ -1,0 +1,18 @@
+// uses flexbox to make div fullscreen (also option to center it)
+@mixin fullscreen($center: 1) {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    @if $center == 1 {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// stylize the buttons
+@mixin buttons() {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 10px;
+}

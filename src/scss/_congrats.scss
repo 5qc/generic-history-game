@@ -1,9 +1,7 @@
+@use "_mixins" as *;
+
 #congrats {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include fullscreen();
     position: absolute;
     top: 0;
     left: 0;

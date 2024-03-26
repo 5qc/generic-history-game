@@ -24,11 +24,19 @@ function generateQuestion(difficulty: string) {
 
     const r = Math.floor(Math.random() * data.length)
     let q = [...[...data][r]]
+    let ic = [...[...data][r]]
     questionPage.querySelector(".question").innerHTML = q[0]
+
+    ic.shift()
+    ic.shift()
+    console.log(ic)
+    ic = shuffle(ic)
+    while (ic.length > 3) ic.pop()
+    console.log(ic)
 
     q.shift()
     q[0] += "!!c"
-    q = shuffle(q)
+    q = shuffle([q[0], ...ic])
 
     let correct: number
     for (let i = 0; i < q.length; i++) {

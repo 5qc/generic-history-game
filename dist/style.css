@@ -64,10 +64,10 @@ button.incorrect {
   }
 }
 #select-difficulty {
-  display: flex;
-  position: absolute;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  position: absolute;
   top: 0;
   left: 0;
   flex-direction: row;
@@ -169,6 +169,9 @@ button.incorrect {
   animation: 2s jiggle ease-in-out infinite;
 }
 #home .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
   padding-top: 10px;
 }
 
@@ -197,6 +200,49 @@ button.incorrect {
   }
   100% {
     transform: translateX(100vw);
+  }
+}
+#notice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #d8bca9;
+  padding: 1em 2em;
+  border-radius: 7px;
+  cursor: pointer;
+  animation: 1s zoom-in ease-in-out;
+  max-width: 400px;
+  width: 99%;
+}
+#notice.zoom-out {
+  animation: 1s zoom-out ease-in-out;
+}
+#notice #notice-title {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+#notice #notice-content {
+  padding-top: 10px;
+  font-size: 1.25em;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes zoom-out {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
   }
 }
 #progress-bar {
@@ -239,10 +285,10 @@ button.incorrect {
   font-weight: 800;
 }
 #question .answers {
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 7px;
+  padding-top: 10px;
 }
 #question.backwards, #question.backwards * {
   animation-direction: reverse;
@@ -318,4 +364,6 @@ body {
 
 .none {
   display: none !important;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

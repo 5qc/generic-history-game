@@ -1,10 +1,9 @@
 @use "_settings" as *;
+@use "_mixins" as *;
 
 #select-difficulty {
-    display: flex;
+    @include fullscreen(0);
     position: absolute;
-    width: 100vw;
-    height: 100vh;
     top: 0;
     left: 0;
     flex-direction: row;
