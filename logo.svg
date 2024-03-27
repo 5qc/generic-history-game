@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 805.73 108.27">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000;
+        font-family: Helvetica-Bold, Helvetica;
+        font-size: 80px;
+        font-weight: 700;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(.5 69.29)"><tspan x="0" y="0">generic history game</tspan></text>
+</svg>
