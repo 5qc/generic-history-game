@@ -3,12 +3,10 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #000;
+        fill: #f0e5de;
         font-family: Helvetica-Bold, Helvetica;
         font-size: 80px;
         font-weight: 700;
-        stroke: #fff;
-        stroke-miterlimit: 10;
       }
     </style>
   </defs>
