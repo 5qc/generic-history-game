@@ -10,35 +10,43 @@ const maxQuestions = 10 // how many questions to run in a single game.
 
 let gameQuestions: string[] = []
 
+/*
+    the main function
+*/
 function generateQuestion(difficulty: string) {
+    // get all questions in selected difficulty
     let data: QuestionData
-    switch (difficulty) { // get all questions in selected difficulty
+    switch (difficulty) {
         case "easy": data = [...easyQuestions]; break
         case "medium": data = [...mediumQuestions]; break
         case "hard": data = [...hardQuestions]; break
         default: data = [...easyQuestions, ...mediumQuestions, ...hardQuestions]; break
     }
 
+    // remove classes from buttons
     for (let b of buttons) {
         b.classList.remove("incorrect")
         b.classList.remove("correct")
     }
 
+    // generate first question and add it
     const r = Math.floor(Math.random() * data.length)
     let q = [...[...data][r]]
     let ic = [...[...data][r]]
     questionPage.querySelector(".question").innerHTML = q[0]
 
+    // add to saved questions if it's the first one
     if (questionNo === 0) gameQuestions.push(questionPage.querySelector(".question").innerHTML)
 
-    ic.shift()
-    ic.shift()
-    ic = shuffle(ic)
-    while (ic.length > 3) ic.pop()
+    ic.shift() // remove question
+    ic.shift() // remove correct answer
+    ic = shuffle(ic) // shuffle incorrect answers
+    while (ic.length > 3) ic.pop() // remove extra answers
 
-    q.shift()
-    q[0] += "!!c"
-    q = shuffle([q[0], ...ic])
+    // put answers on buttons
+    q.shift() // remove question
+    q[0] += "!!c" // mark correct answer
+    q = shuffle([q[0], ...ic]) // shuffle answers
 
     let correct: number
     for (let i = 0; i < q.length; i++) {

@@ -19,7 +19,7 @@ const hardQuestions = [
     ["who was the last byzantine emperor?", "constantine xi palaiologos", "john viii palaiologos", "manuel ii palaiologos", "john v palaiologos", "john vii palaiologos", "john v palaiologos", "andronikos iv palaiologos", "john vi kantakouzenos", "andronikos iii palaiologos", "michael ix palaiologos", "andronikos ii palaiologos", "michael viii palaiologos"],
     ["what country did mansa musa rule over?", "mali empire", "ghana empire", "gao empire", "abbasid caliphate", "mandara kingdom", "wattasid dynasty", "emirate of nekor", "kingdom of nri", "kingdom of kongo", "kakongo"],
     ["who was the last leader of apartheid-era south africa?", "f. w. de klerk", "p. w. botha", "marais viljoen", "john vorster", "nico diederichs", "jim fouché", "eben dönges", "c. r. swart"],
-    ["which country ruled the provisional government of cuba?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
+    ["which country ruled over cuba from 1906 to 1909?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
     ["what is the largest verified impact structure on earth?", "vredefort", "chicxulub", "sudbury", "popigai", "manicouagan", "acraman", "morokweng", "kara", "beaverhead", "tookoonooka", "charlevoix", "siljan ring", "karakul"]
 ];
 const mediumQuestions = [
@@ -114,9 +114,13 @@ let score = 0; // correct questions
 let questionNo = 0;
 const maxQuestions = 10; // how many questions to run in a single game.
 let gameQuestions = [];
+/*
+    the main function
+*/
 function generateQuestion(difficulty) {
+    // get all questions in selected difficulty
     let data;
-    switch (difficulty) { // get all questions in selected difficulty
+    switch (difficulty) {
         case "easy":
             data = [...easyQuestions];
             break;
@@ -130,24 +134,28 @@ function generateQuestion(difficulty) {
             data = [...easyQuestions, ...mediumQuestions, ...hardQuestions];
             break;
     }
+    // remove classes from buttons
     for (let b of buttons) {
         b.classList.remove("incorrect");
         b.classList.remove("correct");
     }
+    // generate first question and add it
     const r = Math.floor(Math.random() * data.length);
     let q = [...[...data][r]];
     let ic = [...[...data][r]];
     questionPage.querySelector(".question").innerHTML = q[0];
+    // add to saved questions if it's the first one
     if (questionNo === 0)
         gameQuestions.push(questionPage.querySelector(".question").innerHTML);
-    ic.shift();
-    ic.shift();
-    ic = shuffle(ic);
+    ic.shift(); // remove question
+    ic.shift(); // remove correct answer
+    ic = shuffle(ic); // shuffle incorrect answers
     while (ic.length > 3)
-        ic.pop();
-    q.shift();
-    q[0] += "!!c";
-    q = shuffle([q[0], ...ic]);
+        ic.pop(); // remove extra answers
+    // put answers on buttons
+    q.shift(); // remove question
+    q[0] += "!!c"; // mark correct answer
+    q = shuffle([q[0], ...ic]); // shuffle answers
     let correct;
     for (let i = 0; i < q.length; i++) {
         if (q[i].endsWith("!!c")) {

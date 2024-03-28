@@ -7,6 +7,6 @@ const hardQuestions: QuestionData = [
     ["who was the last byzantine emperor?", "constantine xi palaiologos", "john viii palaiologos", "manuel ii palaiologos", "john v palaiologos", "john vii palaiologos", "john v palaiologos", "andronikos iv palaiologos", "john vi kantakouzenos", "andronikos iii palaiologos", "michael ix palaiologos", "andronikos ii palaiologos", "michael viii palaiologos"],
     ["what country did mansa musa rule over?", "mali empire", "ghana empire", "gao empire", "abbasid caliphate", "mandara kingdom", "wattasid dynasty", "emirate of nekor", "kingdom of nri", "kingdom of kongo", "kakongo"],
     ["who was the last leader of apartheid-era south africa?", "f. w. de klerk", "p. w. botha", "marais viljoen", "john vorster", "nico diederichs", "jim fouché", "eben dönges", "c. r. swart"],
-    ["which country ruled the provisional government of cuba?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
+    ["which country ruled over cuba from 1906 to 1909?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
     ["what is the largest verified impact structure on earth?", "vredefort", "chicxulub", "sudbury", "popigai", "manicouagan", "acraman", "morokweng", "kara", "beaverhead", "tookoonooka", "charlevoix", "siljan ring", "karakul"]
 ]
