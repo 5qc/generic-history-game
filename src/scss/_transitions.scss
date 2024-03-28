@@ -38,9 +38,19 @@
         opacity: 0;
     }
 }
+@keyframes transition6 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(10);
+        opacity: 0;
+    }
+}
 
 // generate classes for each transition (except #2)
-@for $i from 1 through 5 {
+@for $i from 1 through 6 {
     @if $i != 2 {
         .transition#{$i} {
             animation: 1.5s transition#{$i} ease-in-out forwards;
