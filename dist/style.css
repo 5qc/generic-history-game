@@ -238,8 +238,6 @@ button.incorrect {
   animation: 1s zoom-in ease-in-out;
   max-width: 400px;
   width: 99%;
-}
-#notice.clickable {
   cursor: pointer;
 }
 #notice.zoom-out {
