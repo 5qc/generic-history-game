@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/5qc/generic-history-game/1115834f4c9eff2b6a6bab7413e12667a906475b/src/assets/logo.svg" width="650" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/5qc/generic-history-game/a42d123eebaa1cd514d6e8dc65491fe4b1477105/src/assets/logo.svg" width="650" /></p>
 <h3 align="center">minimalistic trivia game about history by me</h3>
 
 ## game functionality
