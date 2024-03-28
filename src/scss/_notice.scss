@@ -9,11 +9,13 @@
     background-color: darken($bgColor, 15%);
     padding: 1em 2em;
     border-radius: 7px;
-    cursor: pointer;
     animation: 1s zoom-in ease-in-out;
     max-width: 400px;
     width: 99%;
 
+    &.clickable {
+        cursor: pointer;
+    }
     &.zoom-out {
         animation: 1s zoom-out ease-in-out;
     }
