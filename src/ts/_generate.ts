@@ -4,9 +4,11 @@ const congrats = <HTMLDivElement>document.getElementById("congrats")
 const progressBar = <HTMLDivElement>document.getElementById("progress-bar")
 const bar = <HTMLDivElement>progressBar.querySelector("div")
 
-let score = 0
+let score = 0 // correct questions
 let questionNo = 0
-const maxQuestions = 2
+const maxQuestions = 10 // how many questions to run in a single game.
+
+let gameQuestions: string[] = []
 
 function generateQuestion(difficulty: string) {
     let data: QuestionData
@@ -27,12 +29,12 @@ function generateQuestion(difficulty: string) {
     let ic = [...[...data][r]]
     questionPage.querySelector(".question").innerHTML = q[0]
 
+    if (questionNo === 0) gameQuestions.push(questionPage.querySelector(".question").innerHTML)
+
     ic.shift()
     ic.shift()
-    console.log(ic)
     ic = shuffle(ic)
     while (ic.length > 3) ic.pop()
-    console.log(ic)
 
     q.shift()
     q[0] += "!!c"
@@ -82,7 +84,7 @@ function generateQuestion(difficulty: string) {
                         (<HTMLSpanElement>document.getElementById("score")).innerText = score.toString()
                     }
 
-                    // if the game is complete
+                    // code to do at the end of the game
                     if (questionNo === maxQuestions) {
                         (<HTMLDivElement>document.getElementById("final-score")).innerText = `score was ${score}`
 
@@ -98,10 +100,12 @@ function generateQuestion(difficulty: string) {
                                 setTimeout(() => {
                                     congrats.classList.add("fade-out")
 
+                                    // reset stuff
                                     score = 0
                                     questionNo = 0;
                                     (<HTMLSpanElement>document.getElementById("score")).innerText = score.toString()
                                     updateProgressBar()
+                                    gameQuestions = []
 
                                     setTimeout(() => {
                                         congrats.classList.add("none")
@@ -117,16 +121,22 @@ function generateQuestion(difficulty: string) {
                             }, 1000)
                         }, r !== 4 ? 2000 : 930)
                     } else {
+                        /*
+                            code to run if we have not reached the end of the game yet.
+                        */
                         setTimeout(() => {
                             function generateWrapper(d: string) {
-                                const previous = document.querySelector(".question").innerHTML
-    
+                                // this function checks other questions that have already been answered.
+                                // if the generated question has not been answered yet, run it.
                                 generateQuestion(d)
-                                if (document.querySelector(".question").innerHTML === previous) {
-                                    generateWrapper(d)
-                                }
+                                const q = document.querySelector(".question").innerHTML
+
+                                console.log(gameQuestions, q, gameQuestions.includes(q))
+
+                                if (gameQuestions.includes(q)) generateWrapper(d)
+                                else gameQuestions.push(q)
                             }
-                            generateWrapper(difficulty) // generate new question
+                            generateWrapper(difficulty)
     
                             // @ts-ignore
                             if (r !== 4) {

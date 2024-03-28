@@ -12,8 +12,6 @@ homePlay.onclick = () => {
     }, 2000)
 }
 
-generateQuestion("easy")
-
 function shuffle(array) {
     let currentIndex = array.length, randomIndex: number
 
