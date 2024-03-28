@@ -1,6 +1,6 @@
 <center>
 
-![generic history game logo](./src/assets/logo.svg)
+<img src="https://raw.githubusercontent.com/5qc/generic-history-game/1115834f4c9eff2b6a6bab7413e12667a906475b/src/assets/logo.svg" width="650" />
 <h3 align="center">minimalistic trivia game by me</h3>
 </center>
 
