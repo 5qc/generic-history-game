@@ -1,7 +1,8 @@
 @use "_settings" as *;
 @use "_mixins" as *;
 
-#select-difficulty {
+#select-difficulty,
+#special-difficulty {
     @include fullscreen(0);
     position: absolute;
     top: 0;
@@ -29,6 +30,7 @@
         }
     }
 
+    // normal difficulties
     #easy {
         background-color: $green;
         animation: 1s move-up ease-in-out forwards;
@@ -42,6 +44,19 @@
         animation: 1s 1s move-up ease-in-out forwards;
     }
 
+    // special difficulties
+    #hyperspecific {
+        background-color: #000;
+        color: #fff;
+        animation: 1s move-up ease-in-out forwards;
+    }
+    #all {
+        background-color: #fff;
+        color: #000;
+        animation: 1s .5s move-up ease-in-out forwards;
+    }
+
+    // make the difficulty cover screen and disappear when clicked
     &.expand-wrapper {
         > div {
             flex-shrink: 1;

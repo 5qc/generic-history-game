@@ -1,12 +1,19 @@
 const diff = {
     easy: <HTMLDivElement>document.getElementById("easy"),
     medium: <HTMLDivElement>document.getElementById("medium"),
-    hard: <HTMLDivElement>document.getElementById("hard")
+    hard: <HTMLDivElement>document.getElementById("hard"),
 }
-const select = <HTMLDivElement>document.getElementById("select-difficulty")
+const diff_special = {
+    hyperspecific: <HTMLDivElement>document.getElementById("hyperspecific"),
+    all: <HTMLDivElement>document.getElementById("all")
+}
 
-function chooseDifficulty(d: string) {
-    diff[d].classList.add("expand")
+function chooseDifficulty(d: string, special: boolean = false) {
+    const select = special ? <HTMLDivElement>document.getElementById("special-difficulty") : <HTMLDivElement>document.getElementById("select-difficulty")
+
+    if (special) diff_special[d].classList.add("expand")
+    else diff[d].classList.add("expand")
+
     select.classList.add("expand-wrapper")
     progressBar.style.transform = `translateY(0%)`
 
@@ -14,16 +21,21 @@ function chooseDifficulty(d: string) {
     
     setTimeout(() => {
         questionPage.classList.remove("none")
-        diff[d].classList.add("difficulty-transition")
+        if (special) diff_special[d].classList.add("difficulty-transition")
+        else diff[d].classList.add("difficulty-transition")
 
         otherDifficulties(d, "none")
 
         setTimeout(() => {
             select.classList.add("none")
 
-            diff[d].classList.remove("expand")
+            if (special) diff_special[d].classList.remove("expand")
+            else diff[d].classList.remove("expand")
+
             select.classList.remove("expand-wrapper")
-            diff[d].classList.remove("difficulty-transition")
+
+            if (special) diff_special[d].classList.remove("difficulty-transition")
+            else diff[d].classList.remove("difficulty-transition")
 
             otherDifficulties(d, "none", "remove")
         }, 2000)
@@ -54,6 +66,20 @@ function otherDifficulties(d: string, c: string, a: string = "add") {
         } else if (a === "remove") {
             diff.easy.classList.remove(c)
             diff.medium.classList.remove(c)
+        }
+    }
+
+    if (d === "hyperspecific") {
+        if (a === "add") {
+            diff_special.all.classList.add(c)
+        } else if (a === "remove") {
+            diff_special.all.classList.remove(c)
+        }
+    } else if (d === "all") {
+        if (a === "add") {
+            diff_special.hyperspecific.classList.add(c)
+        } else if (a === "remove") {
+            diff_special.hyperspecific.classList.remove(c)
         }
     }
 }

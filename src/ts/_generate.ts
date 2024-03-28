@@ -17,9 +17,13 @@ function generateQuestion(difficulty: string) {
     // get all questions in selected difficulty
     let data: QuestionData
     switch (difficulty) {
+        // regular difficulties
         case "easy": data = [...easyQuestions]; break
         case "medium": data = [...mediumQuestions]; break
         case "hard": data = [...hardQuestions]; break
+        
+        // special difficulties
+        case "hyperspecific": data = [...hyperspecificQuestions]; break
         default: data = [...easyQuestions, ...mediumQuestions, ...hardQuestions]; break
     }
 
@@ -79,7 +83,7 @@ function generateQuestion(difficulty: string) {
 
                 setTimeout(() => {
                     // pick a random transition
-                    const r = randomInRange(1, 5)
+                    const r = randomInRange(1, 6)
                     const l = [document.querySelector(".question"), ...buttons]
 
                     questionPage.classList.add(`transition${r}`) // choose transition
@@ -126,8 +130,8 @@ function generateQuestion(difficulty: string) {
                                         }, 1000)
                                     }, 1000)
                                 }, 2500)
-                            }, 1000)
-                        }, r !== 4 ? 2000 : 930)
+                            }, 1000) // @ts-ignore
+                        }, r !== 4 ? 2000 : 923)
                     } else {
                         /*
                             code to run if we have not reached the end of the game yet.

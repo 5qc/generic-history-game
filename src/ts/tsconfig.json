@@ -6,8 +6,8 @@
     },
     "include": [
         "data/*.ts",
+        "data/special/*.ts",
         "_*.ts",
         "*.ts",
-        "script.ts"
-    ]
+        "script.ts"]
 }

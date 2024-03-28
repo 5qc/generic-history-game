@@ -1,6 +1,7 @@
 const home = <HTMLDivElement>document.getElementById("home")
 const homePlay = <HTMLButtonElement>document.getElementById("home-play")
 
+const select = <HTMLDivElement>document.getElementById("select-difficulty")
 homePlay.onclick = () => {
     home.classList.add("animation")
     setTimeout(() => {
