@@ -4,13 +4,35 @@ const easyQuestions = [
     ["what country did napoleon rule over?", "france", "portugal", "united kingdom", "netherlands", "spain", "belgium", "switzerland", "italy", "germany"],
     ["who painted the mona lisa?", "leonardo da vinci", "michelangelo", "jan van eyck", "raphael", "masaccio", "titian"],
     ["who invented the telephone?", "alexander graham bell", "samuel morse", "steve jobs", "edwin howard armstrong"],
-    ["the first atomic bomb attack was on which city?", "hiroshima", "nagasaki", "kobe", "fukuoka", "sendai", "kyoto", "niigata", "kawasaki", "nagoya"]
+    ["the first atomic bomb attack was on which city?", "hiroshima", "nagasaki", "kobe", "fukuoka", "sendai", "kyoto", "niigata", "kawasaki", "nagoya"],
+    ["where were the first olympic games held?", "athens", "paris", "london", "stockholm", "berlin", "amsterdam", "vienna", "budapest", "prague", "warsaw", "munich", "brussels", "antwerp", "thessaloniki"],
+    ["what year did world war ii end?", "1945", "1944", "1943", "1942", "1941", "1940", "1939"],
+    ["who was the first person to walk on the moon?", "neil armstrong", "buzz aldrin", "michael collins", "pete conrad", "richard f. gordon jr.", "alan bean"],
+    ["when was the fall of the berlin wall?", "1989", "1988", "1987", "1986", "1990", "1991", "1985", "1984", "1983", "1982", "1981"]
 ];
 const hardQuestions = [
-    ["", "", "", "", ""]
+    ["who assassinated archduke franz ferdinand?", "gavrilo princip", "nedeljko čabrinović", "vaso čubrilović", "dragutin dimitrijević", "trifko grabež", "danilo ilić", "miško jovanović", "muhamed mehmedbašić", "cvjetko popović"],
+    ["when did russia annex the crimean peninsula?", "18 march 2014", "27 february 2014", "26 march 2014", "22 february 2014"],
+    ["in what battle did ethiopia successfully resist italian imperialism?", "battle of adwa", "siege of mekelle", "battle of amba alagi", "battle of debra ailà", "battle of senafe", "battle of coatit"],
+    ["what volcano eruption caused the year without a summer?", "mount tambora", "krakatoa", "mount galunggung", "mount tarawera", "mount st. helens", "mount piantubo", "mount fuji"],
+    ["who led the ottoman empire towards victory in constantinople in 1453?", "mehmed ii", "murad ii", "mehmed i", "beyezid ii", "selim i", "suleiman i", "selim ii", "murad iii", "mehmed iii"],
+    ["who was the last byzantine emperor?", "constantine xi palaiologos", "john viii palaiologos", "manuel ii palaiologos", "john v palaiologos", "john vii palaiologos", "john v palaiologos", "andronikos iv palaiologos", "john vi kantakouzenos", "andronikos iii palaiologos", "michael ix palaiologos", "andronikos ii palaiologos", "michael viii palaiologos"],
+    ["what country did mansa musa rule over?", "mali empire", "ghana empire", "gao empire", "abbasid caliphate", "mandara kingdom", "wattasid dynasty", "emirate of nekor", "kingdom of nri", "kingdom of kongo", "kakongo"],
+    ["who was the last leader of apartheid-era south africa?", "f. w. de klerk", "p. w. botha", "marais viljoen", "john vorster", "nico diederichs", "jim fouché", "eben dönges", "c. r. swart"],
+    ["which country ruled the provisional government of cuba?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
+    ["what is the largest verified impact structure on earth?", "vredefort", "chicxulub", "sudbury", "popigai", "manicouagan", "acraman", "morokweng", "kara", "beaverhead", "tookoonooka", "charlevoix", "siljan ring", "karakul"]
 ];
 const mediumQuestions = [
-    ["", "", "", "", ""]
+    ["how many wives did henry viii have?", "6", "5", "4", "3", "2", "1", "7", "8", "9", "10"],
+    ["what is the official name of greece?", "hellenic republic", "republic of greece", "greek republic", "hellenes republic", "republic of hellenes", "greece republic", "kingdom of greece", "greek kingdom", "hellenic kingdom", "kingdom of hellenes"],
+    ["who was the last general secretary of the soviet union?", "mikhail gorbachev", "konstantin chernenko", "yuri andropov", "leonid brezhnev", "nikita khrushchev", "joseph stalin", "vyacheslav molotov", "nikolay krestinsky", "elena stasova", "yakov sverdlov"],
+    ["margaret thatcher was a member of which party?", "conservative party", "labour party", "democratic unionist party", "liberal party", "ulster unionist party"],
+    ["who owns greenland?", "denmark", "norway", "sweden", "finland", "united kingdom", "ireland", "iceland", "netherlands", "russia", "canada", "united states"],
+    ["who led the united kingdom towards victory during world war ii?", "winston churchill", "neville chamberlain", "clement attlee", "stanley baldwin", "douglas hacking", "thomas dugdale", "ralph assheton"],
+    ["which country did germany invade that led to world war ii?", "poland", "united kingdom", "czech republic", "austria", "switzerland", "france", "luxembourg", "belgium", "netherlands", "denmark", "italy"],
+    ["when was women's suffrage established across the united states?", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913", "1912", "1911", "1910", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930"],
+    ["who succeeded adolf hitler as leader of germany?", "karl dönitz", "joseph goebbels", "lutz graf schwerin von krosigk", "hans lammers", "otto meissner", "martin bormann", "philip bouhler", "hermann göring", "konstantin von neurath"],
+    ["what city did anne frank hide in from the nazis?", "amsterdam", "brussels", "antwerp", "rotterdam", "the hague", "düsseldorf", "strasbourg", "paris", "luxembourg", "london", "berlin"]
 ];
 const diff = {
     easy: document.getElementById("easy"),
@@ -88,9 +110,10 @@ const buttons = questionPage.querySelectorAll(".answers button");
 const congrats = document.getElementById("congrats");
 const progressBar = document.getElementById("progress-bar");
 const bar = progressBar.querySelector("div");
-let score = 0;
+let score = 0; // correct questions
 let questionNo = 0;
-const maxQuestions = 2;
+const maxQuestions = 10; // how many questions to run in a single game.
+let gameQuestions = [];
 function generateQuestion(difficulty) {
     let data;
     switch (difficulty) { // get all questions in selected difficulty
@@ -115,13 +138,13 @@ function generateQuestion(difficulty) {
     let q = [...[...data][r]];
     let ic = [...[...data][r]];
     questionPage.querySelector(".question").innerHTML = q[0];
+    if (questionNo === 0)
+        gameQuestions.push(questionPage.querySelector(".question").innerHTML);
     ic.shift();
     ic.shift();
-    console.log(ic);
     ic = shuffle(ic);
     while (ic.length > 3)
         ic.pop();
-    console.log(ic);
     q.shift();
     q[0] += "!!c";
     q = shuffle([q[0], ...ic]);
@@ -164,7 +187,7 @@ function generateQuestion(difficulty) {
                         score += 1;
                         document.getElementById("score").innerText = score.toString();
                     }
-                    // if the game is complete
+                    // code to do at the end of the game
                     if (questionNo === maxQuestions) {
                         document.getElementById("final-score").innerText = `score was ${score}`;
                         setTimeout(() => {
@@ -176,10 +199,12 @@ function generateQuestion(difficulty) {
                                 congrats.classList.remove("fade-in");
                                 setTimeout(() => {
                                     congrats.classList.add("fade-out");
+                                    // reset stuff
                                     score = 0;
                                     questionNo = 0;
                                     document.getElementById("score").innerText = score.toString();
                                     updateProgressBar();
+                                    gameQuestions = [];
                                     setTimeout(() => {
                                         congrats.classList.add("none");
                                         congrats.classList.remove("fade-out");
@@ -194,15 +219,22 @@ function generateQuestion(difficulty) {
                         }, r !== 4 ? 2000 : 930);
                     }
                     else {
+                        /*
+                            code to run if we have not reached the end of the game yet.
+                        */
                         setTimeout(() => {
                             function generateWrapper(d) {
-                                const previous = document.querySelector(".question").innerHTML;
+                                // this function checks other questions that have already been answered.
+                                // if the generated question has not been answered yet, run it.
                                 generateQuestion(d);
-                                if (document.querySelector(".question").innerHTML === previous) {
+                                const q = document.querySelector(".question").innerHTML;
+                                console.log(gameQuestions, q, gameQuestions.includes(q));
+                                if (gameQuestions.includes(q))
                                     generateWrapper(d);
-                                }
+                                else
+                                    gameQuestions.push(q);
                             }
-                            generateWrapper(difficulty); // generate new question
+                            generateWrapper(difficulty);
                             // @ts-ignore
                             if (r !== 4) {
                                 questionPage.style.display = "none";
@@ -277,7 +309,6 @@ homePlay.onclick = () => {
         home.classList.add("none");
     }, 2000);
 };
-generateQuestion("easy");
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
     while (currentIndex > 0) {
