@@ -215,6 +215,7 @@ button.incorrect {
 }
 #home .title span {
   display: block;
+  animation: 2s jiggle ease-in-out infinite;
 }
 #home .navigation {
   display: flex;
