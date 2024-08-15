@@ -14,12 +14,13 @@
     }
 
     .title {
+        @include no-select();
         font-size: 3em;
         font-weight: 800;
         
         span {
             display: block;
-            animation: 2s jiggle ease-in-out infinite;
+            // animation: 2s jiggle ease-in-out infinite;
         }
     }
     .navigation {

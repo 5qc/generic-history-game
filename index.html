@@ -11,6 +11,7 @@
         <title>generic history game</title>
 
         <link rel="stylesheet" href="./dist/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
         <script src="./dist/script.js" defer></script>
     </head>
     <body>
@@ -18,13 +19,36 @@
             <div class="title"><span>generic history game</span></div>
             <div class="navigation">
                 <button id="home-play">play</button>
+                <button id="home-settings">settings</button>
                 <button id="home-about">about</button>
+                <button id="home-credits">credits</button>
             </div>
         </div>
 
-        <div id="notice" class="none">
-            <div id="notice-title"></div>
-            <div id="notice-content"></div>
+        <div id="notice" class="notice none">
+            <div id="notice-close" class="notice-close">x</div>
+            <div id="notice-title" class="notice-title"></div>
+            <div id="notice-content" class="notice-content"></div>
+        </div>
+        <div id="settings" class="notice none">
+            <div id="settings-close" class="notice-close">x</div>
+            <div class="notice-title">settings</div>
+            <div class="notice-content">
+                <div>
+                    <label for="no-of-questions">no. of questions</label>
+                    <input id="no-of-questions" min="1" max="10" value="10" />
+                </div>
+                <div>
+                    <label for="location">location</label>
+                    <span>
+                        <input id="location" />
+                        <div class="fieldset" style="display: none;"></div>
+                    </span>
+                </div>
+                <div style="padding-top: 10px;">
+                    <button id="reset">reset</button>
+                </div>
+            </div>
         </div>
 
         <div id="select-difficulty" class="none">
@@ -53,7 +77,7 @@
 
         <div id="congrats" class="none">
             <div>congrats</div>
-            you beat the game
+            <span>you beat the game</span>
             <div id="final-score"></div>
         </div>
     </body>

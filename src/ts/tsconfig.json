@@ -5,9 +5,12 @@
         "sourceMap": true
     },
     "include": [
-        "data/*.ts",
-        "data/special/*.ts",
+        "data/locations/*.ts",
+        "_search.ts",
         "_*.ts",
         "*.ts",
-        "script.ts"]
+        "script.ts",
+        "data/*.ts",
+        "data/special/*.ts"
+    ]
 }

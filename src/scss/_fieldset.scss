@@ -1,0 +1,21 @@
+@use "_settings" as *;
+
+.fieldset {
+    background-color: darken(#f0e5de, 20%);
+    padding: .5em 1em;
+    position: fixed;
+    border-radius: 0 0 7px 7px;
+
+    $gap: 6px;
+    .result {
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #000;
+            padding-bottom: $gap;
+        }
+        &:not(:first-child) {
+            margin-top: $gap;
+        }
+    }
+}

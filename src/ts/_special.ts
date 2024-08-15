@@ -3,20 +3,22 @@ const title = <HTMLDivElement>document.querySelector(".title")
 const special = <HTMLDivElement>document.getElementById("special-difficulty")
 
 title.onclick = () => {
-    clickCount += 1
-    setTimeout(() => {
-        clickCount = 0
-    }, 5000) // 5 seconds
+    if (!homePlay.getAttribute("data")) {
+        clickCount += 1
+        setTimeout(() => {
+            clickCount = 0
+        }, 5000) // 5 seconds
 
-    if (clickCount === 5) {
-        home.classList.add("animation")
-        setTimeout(() => {
-            special.classList.remove("none")
-        }, 1000)
-        setTimeout(() => {
-            home.classList.remove("animation")
-            home.classList.add("none")
-        }, 2000)
+        if (clickCount === 5) {
+            home.classList.add("animation")
+            setTimeout(() => {
+                special.classList.remove("none")
+            }, 1000)
+            setTimeout(() => {
+                home.classList.remove("animation")
+                home.classList.add("none")
+            }, 2000)
+        }
     }
 }
 

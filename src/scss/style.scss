@@ -3,22 +3,35 @@
 @use "button";
 @use "congrats";
 @use "difficulty";
+@use "fieldset";
 @use "fonts";
 @use "home";
 @use "notice";
+@use "options";
 @use "progress";
 @use "question";
 @use "transitions";
+
+* {
+    font-family: "Helvetica", "Arial", sans-serif;
+}
 
 html, body {
     height: 100%;
 }
 body {
     overflow: hidden;
-    font-family: "Helvetica", "Arial", sans-serif;
     margin: 0;
     background-color: $bgColor;
     color: #000;
+}
+
+a {
+    color: currentcolor;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .none {

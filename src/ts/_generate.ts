@@ -6,14 +6,36 @@ const bar = <HTMLDivElement>progressBar.querySelector("div")
 
 let score = 0 // correct questions
 let questionNo = 0
-const maxQuestions = 10 // how many questions to run in a single game.
+let maxQuestions = Number(numberOfQuestions.value) // how many questions to run in a single game.
 
 let gameQuestions: string[] = []
 
 /*
     the main function
 */
-function generateQuestion(difficulty: string) {
+function generateQuestion(difficulty: string, location?: string) {
+    // change max number of questions based on difficulty
+    checkThoseDifficulties()
+    if (checkDifficulties[difficulty] === false) {
+        switch(difficulty) {
+            case "easy": maxQuestions = easyQuestions.length; break
+            case "medium": maxQuestions = mediumQuestions.length; break
+            case "hard": maxQuestions = hardQuestions.length; break
+            case "hyperspecific": maxQuestions = hyperspecificQuestions.length; break
+
+            case "LOCATION": maxQuestions = locationQuestions[location].length; break
+        }
+
+        // if previous is false, display notice letting user
+        // know that there is not as many questions as
+        // they wanted
+        if (questionNo === 0) {
+            setTimeout(() => {
+                showNotice("questions", maxQuestions)
+            }, difficulty === "LOCATION" ? 2750 : 3500)
+        }
+    }
+
     // get all questions in selected difficulty
     let data: QuestionData
     switch (difficulty) {
@@ -24,6 +46,7 @@ function generateQuestion(difficulty: string) {
         
         // special difficulties
         case "hyperspecific": data = [...hyperspecificQuestions]; break
+        case "LOCATION": data = [...locationQuestions[location]]; break
         default: data = [...easyQuestions, ...mediumQuestions, ...hardQuestions]; break
     }
 
@@ -100,17 +123,26 @@ function generateQuestion(difficulty: string) {
                     if (questionNo === maxQuestions) {
                         (<HTMLDivElement>document.getElementById("final-score")).innerText = `score was ${score}`
 
+                        if (score === 0) {
+                            (<HTMLSpanElement>document.querySelector("#congrats span")).innerText = "you suck at this game"
+                        }
+                        if ((score / maxQuestions) <= 0.5 && (score / maxQuestions) > 0) {
+                            (<HTMLSpanElement>document.querySelector("#congrats span")).innerText = "you are okay at this game"
+                        }
+
                         setTimeout(() => {
                             congrats.classList.remove("none")
                             congrats.classList.add("fade-in")
                             questionPage.setAttribute("class", "none")
                             progressBar.style.transform = `translateY(-250%)`
+                            playConfetti()
 
                             setTimeout(() => {
                                 congrats.classList.remove("fade-in")
 
                                 setTimeout(() => {
-                                    congrats.classList.add("fade-out")
+                                    congrats.classList.add("fade-out");
+                                    (<HTMLDivElement>document.getElementById("confetti")).classList.add("fade-out")
 
                                     // reset stuff
                                     score = 0
@@ -118,6 +150,10 @@ function generateQuestion(difficulty: string) {
                                     (<HTMLSpanElement>document.getElementById("score")).innerText = score.toString()
                                     updateProgressBar()
                                     gameQuestions = []
+                                    maxQuestions = Number(numberOfQuestions.value)
+                                    homePlay.removeAttribute("data");
+                                    (<HTMLSpanElement>document.querySelector(".title > span")).innerText = "generic history game"
+                                    document.querySelector("title").innerText = "generic history game"
 
                                     setTimeout(() => {
                                         congrats.classList.add("none")
@@ -137,21 +173,26 @@ function generateQuestion(difficulty: string) {
                             code to run if we have not reached the end of the game yet.
                         */
                         setTimeout(() => {
-                            function generateWrapper(d: string) {
+                            function generateWrapper(d: string, l?: string) {
                                 // this function checks other questions that have already been answered.
                                 // if the generated question has not been answered yet, run it.
-                                generateQuestion(d)
+                                if (location) generateQuestion(d, l)
+                                else generateQuestion(d)
+
                                 const q = document.querySelector(".question").innerHTML
 
-                                console.log(gameQuestions, q, gameQuestions.includes(q))
-
-                                if (gameQuestions.includes(q)) generateWrapper(d)
+                                if (gameQuestions.includes(q)) {
+                                    if (location) generateWrapper(d, l)
+                                    else generateWrapper(d)
+                                }
                                 else gameQuestions.push(q)
                             }
-                            generateWrapper(difficulty)
+                            if (location) generateWrapper(difficulty, location)
+                            else generateWrapper(difficulty)
     
                             // @ts-ignore
                             if (r !== 4) {
+                                // reload question
                                 questionPage.style.display = "none"
                                 setTimeout(() => {
                                     questionPage.style.display = "flex"
@@ -171,6 +212,7 @@ function generateQuestion(difficulty: string) {
     }
 }
 
-function updateProgressBar() {   
-    bar.style.width = `${(questionNo / maxQuestions) * 100}%`
+function updateProgressBar() {
+    const e = (questionNo / maxQuestions) * 100
+    bar.style.width = `${e}%`
 }

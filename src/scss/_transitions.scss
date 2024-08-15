@@ -50,10 +50,12 @@
 }
 
 // generate classes for each transition (except #2)
-@for $i from 1 through 6 {
+@for $i from 1 through 7 {
     @if $i != 2 {
-        .transition#{$i} {
-            animation: 1.5s transition#{$i} ease-in-out forwards;
+        @if $i != 7 {
+            .transition#{$i} {
+                animation: 1.5s transition#{$i} ease-in-out forwards;
+            }
         }
     }
 }
