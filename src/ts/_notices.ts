@@ -2,7 +2,7 @@
 const notices: NoticeData = {
     "about": ["about", "this is a generic history game about history and stuff (cause i like history)<br /><br />follow me on <a href='https://twitter.com/_rxnin_'>twitter</a>"],
     "questions": [null, "due to the scarcity of questions in this dataset, the number of questions has been set to $1."],
-    "credits": ["credits", "programming by me<br />design by me<br />ideas by me and my mom (the progress bar)"]
+    "credits": ["credits", "programming by: me<br />design by: me<br />ideas by: me and my mom"]
 };
 
 // functions
