@@ -8,5 +8,6 @@ const mediumQuestions: QuestionData = [
     ["which country did germany invade that led to world war ii?", "poland", "united kingdom", "czech republic", "austria", "switzerland", "france", "luxembourg", "belgium", "netherlands", "denmark", "italy"],
     ["when was women's suffrage established across the united states?", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913", "1912", "1911", "1910", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930"],
     ["who succeeded adolf hitler as leader of germany?", "karl dönitz", "joseph goebbels", "lutz graf schwerin von krosigk", "hans lammers", "otto meissner", "martin bormann", "philip bouhler", "hermann göring", "konstantin von neurath"],
-    ["what city did anne frank hide in from the nazis?", "amsterdam", "brussels", "antwerp", "rotterdam", "the hague", "düsseldorf", "strasbourg", "paris", "luxembourg", "london", "berlin"]
+    ["what city did anne frank hide in from the nazis?", "amsterdam", "brussels", "antwerp", "rotterdam", "the hague", "düsseldorf", "strasbourg", "paris", "luxembourg", "london", "berlin"],
+    ["where were the first modern olympic games held?", "athens", "paris", "london", "stockholm", "berlin", "amsterdam", "vienna", "budapest", "prague", "warsaw", "munich", "brussels", "antwerp", "thessaloniki"],
 ]

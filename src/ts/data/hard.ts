@@ -8,5 +8,7 @@ const hardQuestions: QuestionData = [
     ["what country did mansa musa rule over?", "mali empire", "ghana empire", "gao empire", "abbasid caliphate", "mandara kingdom", "wattasid dynasty", "emirate of nekor", "kingdom of nri", "kingdom of kongo", "kakongo"],
     ["who was the last leader of apartheid-era south africa?", "f. w. de klerk", "p. w. botha", "marais viljoen", "john vorster", "nico diederichs", "jim fouché", "eben dönges", "c. r. swart"],
     ["which country ruled over cuba from 1906 to 1909?", "united states", "canada", "spain", "mexico", "france", "portugal", "ireland", "united kingdom"],
-    ["what is the largest verified impact structure on earth?", "vredefort", "chicxulub", "sudbury", "popigai", "manicouagan", "acraman", "morokweng", "kara", "beaverhead", "tookoonooka", "charlevoix", "siljan ring", "karakul"]
+    ["what is the largest verified impact structure on earth?", "vredefort", "chicxulub", "sudbury", "popigai", "manicouagan", "acraman", "morokweng", "kara", "beaverhead", "tookoonooka", "charlevoix", "siljan ring", "karakul"],
+    ["when was the fall of the berlin wall?", "1989", "1988", "1987", "1986", "1990", "1991", "1985", "1984", "1983", "1982", "1981"],
+    ["where was the location of napoleon's second exile and eventual death?", "saint helena", "ascension island", "tristan da cunha", "corsica", "elba", "sardinia", "malta", "crete", "guadeloupe", "martinique", "barbados"]
 ]
